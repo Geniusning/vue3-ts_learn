@@ -6,13 +6,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
-
+import { defineComponent, onMounted, PropType } from 'vue'
+import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+export interface IBook {
+  id: number
+  name: string
+}
 export default defineComponent({
-  name: "Home",
+  name: 'Home',
   components: {
-    HelloWorld,
+    HelloWorld
   },
-});
+  setup(props) {
+    onMounted(() => {
+      console.log(123)
+    })
+  }
+})
 </script>
