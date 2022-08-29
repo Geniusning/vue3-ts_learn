@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, PropType } from 'vue'
+import { defineComponent, onMounted } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
 export interface IBook {
   id: number
@@ -17,7 +17,7 @@ export default defineComponent({
   components: {
     HelloWorld
   },
-  setup(props) {
+  setup() {
     onMounted(() => {
       console.log(123)
     })
