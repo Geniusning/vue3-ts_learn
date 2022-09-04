@@ -1,8 +1,5 @@
-import 'element-plus/theme-chalk/base.css'
-import { ElButton, ElInput } from 'element-plus'
-const components = [ElButton, ElInput]
-export function registerApp(app: any): void {
-  for (const component of components) {
-    app.component(ElButton.name, component)
-  }
+import { App } from 'vue'
+import registerElement from './register-element'
+export function registerApp(app: App): void {
+  registerElement(app)
 }
