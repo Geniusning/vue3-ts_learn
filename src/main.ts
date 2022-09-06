@@ -4,10 +4,19 @@ import router from './router'
 import store from './store'
 import { registerApp } from './global'
 import MdRequest from './service'
+import 'normalize.css'
+import './assets/css/index.less'
+import 'element-plus/es/components/loading/style/css'
 
-MdRequest.request({
-  url: '/get',
-  method: 'GET',
+interface DataType {
+  data: any
+  origin: string
+  url: string
+}
+MdRequest.request<DataType>({
+  url: '/post',
+  method: 'POST',
+  showLoading: true,
   interceptors: {
     requestInterceptors: (config) => {
       console.log('单独请求的拦截')
@@ -18,6 +27,9 @@ MdRequest.request({
       return res
     }
   }
+}).then((res) => {
+  console.log(res.url)
+  console.log(res.origin)
 })
 const app = createApp(App)
 // registerApp(app)

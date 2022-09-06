@@ -1,11 +1,12 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
-export interface MdRequestInterceptors {
+export interface MdRequestInterceptors<T = AxiosResponse> {
   requestInterceptors?: (config: AxiosRequestConfig) => AxiosRequestConfig
   requestInterceptorsCatch?: (err: any) => any
-  responeInterceptors?: (res: AxiosResponse) => AxiosResponse
+  responeInterceptors?: (res: T) => T
   responeInterceptorsCatch?: (err: any) => any
 }
 
-export interface MdConfig extends AxiosRequestConfig {
-  interceptors?: MdRequestInterceptors
+export interface MdConfig<T = AxiosResponse> extends AxiosRequestConfig {
+  interceptors?: MdRequestInterceptors<T>
+  showLoading?: boolean
 }

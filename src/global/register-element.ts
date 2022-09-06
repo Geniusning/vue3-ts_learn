@@ -1,8 +1,15 @@
 import { App } from 'vue'
 import 'element-plus/theme-chalk/base.css'
-import { ElButton, ElInput } from 'element-plus'
+import {
+  ElButton,
+  ElInput,
+  ElTabPane,
+  ElTabs,
+  ElForm,
+  ElFormItem
+} from 'element-plus'
 
-const components = [ElButton, ElInput]
+const components = [ElButton, ElInput, ElTabs, ElTabPane, ElForm, ElFormItem]
 
 export default function (app: App): void {
   for (const component of components) {
