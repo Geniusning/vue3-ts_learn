@@ -21,7 +21,7 @@
         <el-checkbox v-model="isKeepPassword">记住密码</el-checkbox>
         <el-link type="primary">忘记密码</el-link>
       </div>
-
+      <Demo ref="demo" />
       <el-button type="primary" class="login-btn" @click="handleLoginClick"
         >立即登录</el-button
       >
@@ -30,14 +30,22 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import LoginAccount from './login-account.vue'
 import LoginPhone from './login-phone.vue'
+import Demo from './demo.vue'
 
 let isKeepPassword = ref(false)
 const accountRef = ref<InstanceType<typeof LoginAccount>>()
+const demo = ref<InstanceType<typeof Demo>>()
+onMounted(() => {
+  demo.value?.getDemo()
+  console.log('demoValue', demo.value?.demoValue)
+})
 const handleLoginClick = () => {
-  accountRef.value?.loginAction()
+  accountRef.value?.loginAction(isKeepPassword.value)
+  demo.value?.getDemo()
+  console.log('demoValue', demo.value?.demoValue)
 }
 </script>
 
