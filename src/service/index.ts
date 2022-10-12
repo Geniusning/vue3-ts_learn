@@ -1,25 +1,31 @@
-import MdRequest from './request'
+// service统一出口
+import HYRequest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
 
-const MDRequest = new MdRequest({
+import localCache from '@/utils/cache'
+
+const hyRequest = new HYRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
-    requestInterceptors: (config) => {
-      console.log('实例的请求拦截')
+    requestInterceptor: (config) => {
+      // 携带token的拦截
+      const token = localCache.getCache('token')
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
       return config
     },
-    requestInterceptorsCatch(err) {
+    requestInterceptorCatch: (err) => {
       return err
     },
-    responeInterceptors: (res) => {
-      console.log('实例的响应拦截')
+    responseInterceptor: (res) => {
       return res
     },
-    responeInterceptorsCatch(err) {
+    responseInterceptorCatch: (err) => {
       return err
     }
   }
 })
 
-export default MDRequest
+export default hyRequest

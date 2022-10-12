@@ -33,13 +33,15 @@ const formProps = ref([
     type: 'input',
     span: 12,
     required: true,
-    tipMessage: '请输入名字'
+    tipMessage: '请输入名字',
+    appendIcon: 'Search'
   },
   {
     label: '简介',
     prop: 'introduction',
-    type: 'textares',
-    span: 12,
+    type: 'textarea',
+    span: 24,
+    rows: 5,
     required: true
   },
   {
@@ -52,9 +54,9 @@ const formProps = ref([
       { id: 2, label: '女' }
     ]
   },
-  { label: '状态', prop: 'status', span: 8 },
+  { label: '状态', prop: 'status', span: 6 },
   { label: '代码量', prop: 'how', span: 8 },
-  { label: '时间', prop: 'date', span: 8 }
+  { label: '时间', prop: 'date', type: 'date', span: 10 }
 ])
 const rules = ref<FormRules>({
   name: [
